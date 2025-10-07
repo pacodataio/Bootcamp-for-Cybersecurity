@@ -1,0 +1,55 @@
+ MINI FIREWALL
+1. Veryfy  the  CLI interface with -f filename and understandable usage messages.
+2. Read data from the file
+   - Open  the CSV with the packets
+   - Idefine empty packet list: packets = []
+   - Define  enpty SerialNo set to Ignore duplicity: serials_seen = set()
+   
+   - For each line:
+       - Ignore empty lines
+       -  normalize keys and values to strip whitespace , in case teh headres are comig with space after, before or between
+       - get te  SerialNo and Priority
+       - casting elements to integers 
+            -- ig casting fails → ignore line with message 
+       - Verify priority between   1  and 10
+          - if priority  out of range, ignore the line with message  
+
+       - if SerialNo is already in  serials_seen:
+           - print a message about serialNo duplicated
+           - then ignore SerialNo duplicated
+       - Add SerialNo to serials_seen
+       - Add elemen (packet)  to  inputs  dictionary (packets):
+           inputs.append({"SerialNo": SerialNo, "Priority": Priority})
+
+2. Sort the inputs (packets)
+    2.1 process inputs in batches of 10
+    a. for each batch of 10 :
+        a.1 Aplly Bubble Sort algorithm
+             - Compare packets:
+                 a) First by Priority (lower to  higher priority prioridad):
+                      - Priority 1 is the highest, 10 is the lowest.
+                 b) if priority is the same , then order by s SerialNo (lower number first)
+                 - Save sorted packets 
+        a.2  Print the packets of the batch  using this format:`SerialNo,Priority`
+      `
+
+
+4. HANDELING ERROS AND VALIDATION
+   - If a a value is not numeric, print a message with a  line number  and continue
+   -if priority is out of range print a message with line number and continue
+   - If file cant open , show an error message
+   - Avoid the program from crashing due to formatting errors or duplicates
+
+
+
+  CLI example: python MiniFirewall -f input.csv 
+  
+output:
+3,1
+10,1
+2,3
+4,3
+1,5
+9,5
+
+

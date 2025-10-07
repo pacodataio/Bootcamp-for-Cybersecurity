@@ -56,6 +56,7 @@ def main():
         print("Usage:")
         print("  python whois_lookup.py domain1 [domain2 ...]")
         print("  python whois_lookup.py -f input.txt")
+        print(sys.argv)
         sys.exit(1)
     
     if sys.argv[1] == "-f":

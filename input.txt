@@ -1,0 +1,9 @@
+example.com
+openai.com
+python.org
+nic.io
+google.com
+facebook.com
+unicef.org
+google.app 
+facebook
